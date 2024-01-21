@@ -96,17 +96,17 @@ def CHAR(t):
 def weight_first(t):
   t = mp.mpf(t)
   if t != 0:
-    return mp.cos((3 * N_2 + 1) * t/2) * mp.sin(3 * N_2 * t/2) / mp.sin(t/2) - mp.cos((N + 1) * t/2) * mp.sin(N * t/2) / mp.sin(t/2)
+    return mp.cos((3 * N_2 + 1) * t/2) * mp.sin(3 * N_2 * t/2) / mp.sin(t/2) - mp.cos(N * t/2) * mp.sin((N-1) * t/2) / mp.sin(t/2)
   if t == 0:
-    return 3 * N_2 - N
+    return 3 * N_2 - N + 1
 
 # Define weight function
 def weight_second(t):
   t = mp.mpf(t)
   if t != 0:
-    return  mp.cos((3 * N_2 + 1) * t/2) * mp.sin(3 * N_2 * t/2) / mp.sin(t/2) - mp.cos((N_2 + 1) * t/2) * mp.sin(N_2 * t/2) / mp.sin(t/2)
+    return  mp.cos((3 * N_2 + 1) * t/2) * mp.sin(3 * N_2 * t/2) / mp.sin(t/2) - mp.cos(N_2 * t/2) * mp.sin((N_2-1) * t/2) / mp.sin(t/2)
   if t == 0:
-    return 2 * N_2
+    return 2 * N_2 + 1
 
 # Define the expression to be integrated
 def tobeint_first(t):
@@ -127,12 +127,12 @@ print(multiprocessing.cpu_count())
 print("Maximal Approximate Error:", (10**5)**6 * h**6)
 
 # Define the worker function for parallel computation
-def compute_riemann_sum_segment(start, end, h, tobeint_function):
+def compute_boole_sum_segment(start, end, h, tobeint_function):
     return sum([2/45 * h * ( 7 * tobeint_function(x) + 32 * tobeint_function(x + h) + 12 * tobeint_function(x + 2*h) + 32 * tobeint_function(x + 3*h) + 7 * tobeint_function(x + 4*h) )
       for x in mp.linspace(start, end, int((end - start) / (4 * h)) + 1)[:-1]])
 
 # Main computation with a pool of workers
-def parallel_riemann_sum(tobeint_function):
+def parallel_boole_sum(tobeint_function):
 
     # Define how to split the range [0, mp.pi]
     num_segments = multiprocessing.cpu_count()  # Number of segments to split the task into
@@ -145,21 +145,22 @@ def parallel_riemann_sum(tobeint_function):
     num_processes = multiprocessing.cpu_count()  # Change this number to your desired value
 
     with multiprocessing.Pool(processes=num_processes) as pool:
-        results = pool.starmap(compute_riemann_sum_segment, segments)
+        results = pool.starmap(compute_boole_sum_segment, segments)
 
     return sum(results)
 
-# # Perform Riemann Sum
-# prob_second = parallel_riemann_sum(tobeint_second)
 
-# # Print the result with high precision
-# print(mp.nstr(prob_second, n=70))
-
-
-
-# Perform Riemann Sum
-prob_first = parallel_riemann_sum(tobeint_first)
+# Perform boole Sum
+prob_first = parallel_boole_sum(tobeint_first)
 
 # Print the result with high precision
-print("New Delta:", mp.nstr(prob_first, n=70))
+print("New Delta First Term:", mp.nstr(prob_first, n=70))
+
+
+# Perform boole Sum
+prob_second = parallel_boole_sum(tobeint_second)
+
+# Print the result with high precision
+print("New Delta Second Term:", mp.nstr(prob_second, n=70))
+
 
