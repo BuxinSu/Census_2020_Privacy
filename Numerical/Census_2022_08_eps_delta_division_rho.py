@@ -26,7 +26,7 @@ N_CPU_int = int(N_CPU)
 hundred = mp.mpf('100')
 n = mp.mpf('10')
 L = mp.mpf('1000')
-ninty_four = mp.mpf('91.42')
+ninty_four = mp.mpf('91.41')
 
 rho_base = mp.mpf('3.65')
 percentage = hundred/ninty_four
