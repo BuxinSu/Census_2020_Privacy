@@ -10,8 +10,9 @@
    - [`Figure 4c`](Figures/County_Error.ipynb)
    - [`Figure 4d`](Figures/PA_Block_Error.ipynb)
 6. Section 2.4
-   - [`Redection on $\epsilon$`](Figures/State_Error.ipynb)
-   - [`Redection on epsilon`](Figures/Tract_Error.ipynb)
+   - [`Redection on \epsilon`](Numerical/Census_2022_08_eps_delta_division_eps.py)
+   - [`Redection on \sigma^2`](Numerical/Census_2022_08_eps_delta_division_rho.py)
+7. Section 2.5: [`Figure 5`](Figures/Downstream_Tasks.ipynb)
 
 
 ## Results
