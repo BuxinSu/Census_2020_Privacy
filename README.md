@@ -14,7 +14,7 @@
    - [`Redection on \sigma^2`](Numerical/Census_2022_08_eps_delta_division_rho.py)
 7. Section 2.5: [`Figure 5`](Figures/Downstream_Tasks.ipynb)
 8. Appendix A.5: [`Table 2`](Numerical/Error_Table.m)
-
+9. Appendix D.3: [`Characteristic Functions`](Numerical/Characteristic_Function_Evaluation.ipynb)
 
 ## Results
 
