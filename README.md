@@ -17,5 +17,8 @@
 9. Appendix D.3: [`Characteristic Functions`](Numerical/Characteristic_Function_Evaluation.ipynb)
 
 ## Results
-
+1. [`Output_of_Census_2022_08_eps_delta_division_eps`](Results/Output_of_Census_2022_08_eps_delta_division_eps)
+2. [`Output_of_Census_2022_08_eps_delta_division_rho`](Results/Output_of_Census_2022_08_eps_delta_division_rho)
+3. [`Output_of_Output_of_Characteristic_Function_Evaluation`](Results/Output_of_Characteristic_Function_Evaluation)
+4. [`Output of Error_Table'](Results/Output_of_Error_Table.txt)
 
